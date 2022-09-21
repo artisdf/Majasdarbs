@@ -11,59 +11,72 @@ const blankStudent: Student = {
     speciality: '',
 }
 
-function Form() {
-    const [person, setPerson] = React.useState(blankStudent);
+function AddStudent() {
+    const [student, setStudent] = React.useState(blankStudent);
 
     return <>
-        <form onSubmit={(e) => {e.preventDefault();onSave(person)}}>
+        <form onSubmit={(e) => {e.preventDefault();onSave(student);window.location.reload()}}>
             <div>
-                <input
-                    required
-                    value={person.name}
-                    placeholder='Skolēna Vārds'
-                    id='name'
-                    name='name'
-                    onChange={e => setPerson({ ...person, name: e.target.value })}
-                />
-                <input
-                    required
-                    value={person.surname}
-                    placeholder='Skolēna Uzvārds'
-                    id='surname'
-                    name='surname'
-                    onChange={e => setPerson({ ...person, surname: e.target.value })}
-                />
-                <input
-                    required
-                    type={'date'}
-                    value={person.birthDate}
-                    placeholder='Dzimšanas Datums'
-                    id='birthDate'
-                    name='birthDate'
-                    onChange={e => setPerson({ ...person, birthDate: e.target.value })}
-                />
-                <input
-                    required
-                    type={'number'}
-                    value={person.courseNumber}
-                    placeholder='Mācību Kursa Numurs'
-                    id='courseNumber'
-                    name='courseNumber'
-                    onChange={e => setPerson({ ...person, courseNumber: (parseInt(e.target.value)) })}
-                />
-                <input
-                    required
-                    value={person.speciality}
-                    placeholder='Specialitāte'
-                    id='speciality'
-                    name='speciality'
-                    onChange={e => setPerson({ ...person, speciality: e.target.value })}
-                />
+                <div>
+                    <label> Vārds Uzvārds: </label>
+                    <input
+                        required
+                        value={student.name}
+                        placeholder='Skolēna Vārds'
+                        id='name'
+                        name='name'
+                        onChange={e => setStudent({ ...student, name: e.target.value })}
+                    />
+                    <input
+                        required
+                        value={student.surname}
+                        placeholder='Skolēna Uzvārds'
+                        id='surname'
+                        name='surname'
+                        onChange={e => setStudent({ ...student, surname: e.target.value })}
+                    />
+                </div>
+                <div>
+                    <label> Dzimšanas Datums: </label>
+                    <input
+                        required
+                        type={'date'}
+                        value={student.birthDate}
+                        placeholder='Dzimšanas Datums'
+                        id='birthDate'
+                        name='birthDate'
+                        onChange={e => setStudent({ ...student, birthDate: e.target.value })}
+                    />
+                </div>
+                <div>
+                    <label> Kursa Numurs: </label>
+                    <input
+                        required
+                        type={'number'}
+                        min={'0'}
+                        max={'7'}
+                        value={student.courseNumber}
+                        placeholder='Mācību Kursa Numurs'
+                        id='courseNumber'
+                        name='courseNumber'
+                        onChange={e => setStudent({ ...student, courseNumber: (parseInt(e.target.value)) })}
+                    />
+                </div>
+                <div>
+                    <label> Mūzikas Specialitāte: </label>
+                    <input
+                        required
+                        value={student.speciality}
+                        placeholder='Mūzikas Specialitāte'
+                        id='speciality'
+                        name='speciality'
+                        onChange={e => setStudent({ ...student, speciality: e.target.value })}
+                    />
+                </div>
             </div>
-            <button>submit</button>
+            <button className={'btn'}>Pievienot</button>
         </form>
-
     </>
 }
 
-export default Form
+export default AddStudent

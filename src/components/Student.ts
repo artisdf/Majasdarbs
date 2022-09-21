@@ -5,7 +5,7 @@ interface Student {
     birthDate?: string,
     courseNumber?: number,
     speciality?: string,
-    registerDate?: Date,
+    registerDate?: string,
 }
 
 export default Student;
