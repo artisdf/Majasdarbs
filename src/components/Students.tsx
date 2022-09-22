@@ -13,7 +13,7 @@ function Students() {
         window.location.reload();
     }
 
-    return <table>
+    return <table className={'table'} id={'studentsTable'}>
         <thead>
             <tr>
                 <th>ID</th>
@@ -28,13 +28,13 @@ function Students() {
         <tbody >
         {students.map(student =>
             <tr key={student.id}>
-                <td>{student.id}</td>
-                <td>{student.name}</td>
-                <td>{student.surname}</td>
-                <td>{student.birthDate}</td>
-                <td>{student.courseNumber}</td>
-                <td>{student.speciality}</td>
-                <td>{(student.registerDate?.toString())}</td>
+                <td scope="col">{student.id}</td>
+                <td scope="col">{student.name}</td>
+                <td scope="col">{student.surname}</td>
+                <td scope="col">{student.birthDate}</td>
+                <td scope="col">{student.courseNumber}</td>
+                <td scope="col">{student.speciality}</td>
+                <td scope="col">{(student.registerDate?.toString())}</td>
                 <td><TrashFill type={'button'} style={{ color: 'red', cursor: 'pointer'}} onClick={() => clickedDeleteButton(student.id)}/></td>
             </tr>
         )}

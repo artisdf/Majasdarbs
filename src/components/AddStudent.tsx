@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import Student from "./Student";
 import onSave from "./onSave";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 const blankStudent: Student = {
     id: '',
@@ -15,14 +17,15 @@ function AddStudent() {
     const [student, setStudent] = React.useState(blankStudent);
 
     return <>
-        <form onSubmit={(e) => {e.preventDefault();onSave(student);window.location.reload()}}>
+        <Form className={'form'} autoComplete={'off'} onSubmit={(e) => {e.preventDefault();onSave(student);window.location.reload()}}>
             <div>
-                <div>
-                    <label> Vārds Uzvārds: </label>
+                <div className={'form-group'}>
+                    <Form.Label className={'label'}> Skolēna Vārds, Uzvārds : </Form.Label>
                     <input
                         required
                         value={student.name}
-                        placeholder='Skolēna Vārds'
+                        className={'form-control'}
+                        placeholder='Vārds'
                         id='name'
                         name='name'
                         onChange={e => setStudent({ ...student, name: e.target.value })}
@@ -30,52 +33,54 @@ function AddStudent() {
                     <input
                         required
                         value={student.surname}
-                        placeholder='Skolēna Uzvārds'
+                        className={'form-control'}
+                        placeholder='Uzvārds'
                         id='surname'
                         name='surname'
                         onChange={e => setStudent({ ...student, surname: e.target.value })}
                     />
                 </div>
-                <div>
-                    <label> Dzimšanas Datums: </label>
+                <div className={'form-group'}>
+                    <Form.Label className={'label'}> Dzimšanas Datums : </Form.Label>
                     <input
                         required
                         type={'date'}
                         value={student.birthDate}
-                        placeholder='Dzimšanas Datums'
+                        className={'form-control'}
                         id='birthDate'
                         name='birthDate'
                         onChange={e => setStudent({ ...student, birthDate: e.target.value })}
                     />
                 </div>
-                <div>
-                    <label> Kursa Numurs: </label>
+                <div className={'form-group'}>
+                    <Form.Label className={'label'}> Kursa Numurs : </Form.Label>
                     <input
                         required
                         type={'number'}
-                        min={'0'}
+                        min={'1'}
                         max={'7'}
                         value={student.courseNumber}
-                        placeholder='Mācību Kursa Numurs'
+                        className={'form-control'}
                         id='courseNumber'
                         name='courseNumber'
                         onChange={e => setStudent({ ...student, courseNumber: (parseInt(e.target.value)) })}
                     />
                 </div>
-                <div>
-                    <label> Mūzikas Specialitāte: </label>
+                <div className={'form-group'}>
+                    <Form.Label className={'label'}> Mūzikas Specialitāte : </Form.Label>
                     <input
                         required
                         value={student.speciality}
-                        placeholder='Mūzikas Specialitāte'
+                        className={'form-control'}
+                        placeholder='Specialitāte'
                         id='speciality'
                         name='speciality'
                         onChange={e => setStudent({ ...student, speciality: e.target.value })}
                     />
                 </div>
             </div>
-            <button className={'btn'}>Pievienot</button>
-        </form>
+            <Button type={'submit'} className={'btn-dark'}>Pievienot</Button>
+        </Form>
     </>
 }
 
