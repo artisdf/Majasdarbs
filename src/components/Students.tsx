@@ -1,15 +1,30 @@
 import React from 'react';
 import Student from "./Student";
 import { TrashFill } from 'react-bootstrap-icons';
+import internal from 'stream';
 
 function Students() {
     let students:Student[] = [];
-    for (const [key, value] of Object.entries(localStorage)){
-        students.push(JSON.parse(value));
-    }
-
+    console.log(localStorage.getItem('studentKey'))
+    students = localStorage.getItem('studentKey') ? JSON.parse(localStorage.getItem('studentKey') || '') : [];
+    console.info('test');
+    console.log(localStorage.getItem('studentKey'));
+    console.log(students);
+    
     function clickedDeleteButton(id: string) {
-        localStorage.removeItem(id);
+        let student: Student[] = [];
+        student = localStorage.getItem('studentKey') ? JSON.parse(localStorage.getItem('studentKey') || '') : [];
+        console.log(student);
+        for(let i = 0; i < student.length; i++){
+            if(id == student[i].id){
+                //delete student[i];
+                break;
+            }
+        }
+        console.info('test2');
+        console.log(localStorage.getItem('studentKey'));
+        console.log(students);
+        localStorage.setItem('studentKey', JSON.stringify(student))
         window.location.reload();
     }
 

@@ -85,10 +85,6 @@ body {
   outline: none;
 }
 
-.btn:hover {
-  border: #cbccce solid 2px !important;
-}
-
 .btn:active {
   outline: none !important;
 
